@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace AlexanderPoellmann\LaravelPostPlc\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelPostPlcCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-post-plc';
 
     public $description = 'My command';
 
