@@ -2,9 +2,9 @@
 
 namespace AlexanderPoellmann\LaravelPostPlc;
 
+use AlexanderPoellmann\LaravelPostPlc\Commands\LaravelPostPlcCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use AlexanderPoellmann\LaravelPostPlc\Commands\LaravelPostPlcCommand;
 
 class LaravelPostPlcServiceProvider extends PackageServiceProvider
 {
