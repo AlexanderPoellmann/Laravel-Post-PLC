@@ -2,6 +2,7 @@
 
 namespace AlexanderPoellmann\LaravelPostPlc\DataTransferObjects;
 
+use AlexanderPoellmann\LaravelPostPlc\Enums\PostProductCodes;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
 
@@ -14,7 +15,7 @@ class ShipmentRow extends Data
         public readonly ?PrinterRow $PrinterObject,
         public readonly ?string $CostCenterThirdPartyID,
         public readonly ?string $Number,
-        public readonly string $DeliveryServiceThirdPartyID, // AT-Post product code.
+        public readonly PostProductCodes $DeliveryServiceThirdPartyID, // AT-Post product code.
         public readonly ?string $ShippingDateTimeFrom,
         public readonly ?string $ShippingDateTimeTo,
         public readonly AddressRow $OUShipperAddress,
