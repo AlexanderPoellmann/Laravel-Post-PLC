@@ -30,11 +30,11 @@ class LaravelPostPlc
 
     public function __construct()
     {
-        $this->identifier    = config('services.post-plc.identifier', env('APP_NAME', 'Laravel-Post-PLC'));
-        $this->client_id     = config('services.post-plc.client-id');
-        $this->org_unit_id   = config('services.post-plc.org-unit-id');
+        $this->identifier = config('services.post-plc.identifier', env('APP_NAME', 'Laravel-Post-PLC'));
+        $this->client_id = config('services.post-plc.client-id');
+        $this->org_unit_id = config('services.post-plc.org-unit-id');
         $this->org_unit_guid = config('services.post-plc.org-unit-guid');
-        $this->sandbox       = config('services.post-plc.sandbox', false);
+        $this->sandbox = config('services.post-plc.sandbox', false);
     }
 
     public function endpoint(): string
@@ -67,13 +67,14 @@ class LaravelPostPlc
     {
         $data_array = array_filter($data->toArray());
 
-        if (app()->environment() === 'local')
+        if (app()->environment() === 'local') {
             info('[Post PLC] Given data.', $data_array);
+        }
 
         $this->method = $method;
 
         $this->response = Soap::to($this->endpoint())
-                              ->call($method->value, $as_row ? ['row' => $data_array] : $data_array);
+            ->call($method->value, $as_row ? ['row' => $data_array] : $data_array);
     }
 
     public function getResponse(): ?Response
