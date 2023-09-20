@@ -26,6 +26,17 @@ You can publish the config file with:
 php artisan vendor:publish --tag="laravel-post-plc-config"
 ```
 
+Finally, add the following entry to your `services.php` config file:
+
+```php
+    'post-plc' => [
+        'client-id'     => env('PLC_CLIENT_ID'),
+        'org-unit-id'   => env('PLC_ORG_UNIT_ID'),
+        'org-unit-guid' => env('PLC_ORG_UNIT_GUID'),
+        'sandbox'       => env('PLC_SANDBOX', false),
+    ],
+```
+
 ## Usage
 
 ```php
