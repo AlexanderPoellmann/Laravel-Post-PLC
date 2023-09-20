@@ -2,7 +2,10 @@
 
 namespace AlexanderPoellmann\LaravelPostPlc;
 
+use AlexanderPoellmann\LaravelPostPlc\DataTransferObjects\ImportShipmentResult;
 use AlexanderPoellmann\LaravelPostPlc\Enums\ServiceMethods;
+use Exception;
+use Illuminate\Support\Collection;
 use RicorocksDigitalAgency\Soap\Facades\Soap;
 use RicorocksDigitalAgency\Soap\Response\Response;
 use Spatie\LaravelData\Data;
@@ -20,6 +23,8 @@ class LaravelPostPlc
     protected string $org_unit_guid;
 
     protected bool $sandbox;
+
+    protected ?ServiceMethods $method = null;
 
     protected ?Response $response = null;
 
@@ -65,6 +70,8 @@ class LaravelPostPlc
         if (app()->environment() === 'local')
             info('[Post PLC] Given data.', $data_array);
 
+        $this->method = $method;
+
         $this->response = Soap::to($this->endpoint())
                               ->call($method->value, $as_row ? ['row' => $data_array] : $data_array);
     }
@@ -76,11 +83,28 @@ class LaravelPostPlc
 
     public function toArray(): array
     {
-        return (array) $this->getResponse();
+        return json_decode(json_encode($this->getResponse()), true);
     }
 
-    public function hasError(): bool
+    public function toCollection(): Collection
     {
-        return true;
+        return collect($array['response'] ?? []);
+    }
+
+    /** @throws Exception */
+    public function toObject(): Data
+    {
+        return match ($this->method) {
+            ServiceMethods::ImportShipment => ImportShipmentResult::from($this->toCollection()),
+            ServiceMethods::ImportShipmentAndGenerateBarcode,
+            ServiceMethods::GetAvailableTimeWindowsForPickupOrder,
+            ServiceMethods::GetAllowedServicesForCountry,
+            ServiceMethods::CancelShipments,
+            ServiceMethods::PerformEndOfDaySelect,
+            ServiceMethods::PerformEndOfDay,
+            ServiceMethods::ImportAddress,
+            ServiceMethods::CancelPickupOrder,
+            ServiceMethods::ImportPickupOrder => throw new Exception('To be implemented')
+        };
     }
 }

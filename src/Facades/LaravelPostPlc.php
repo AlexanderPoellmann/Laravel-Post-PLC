@@ -3,6 +3,7 @@
 namespace AlexanderPoellmann\LaravelPostPlc\Facades;
 
 use AlexanderPoellmann\LaravelPostPlc\Enums\ServiceMethods;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Facade;
 use RicorocksDigitalAgency\Soap\Response\Response;
 use Spatie\LaravelData\Data;
@@ -18,6 +19,8 @@ use Spatie\LaravelData\Data;
  * @method static void call(ServiceMethods $method, Data $data, bool $as_row)
  * @method static null|Response getResponse()
  * @method static array toArray()
+ * @method static Collection toCollection()
+ * @method static Data toObject()
  */
 class LaravelPostPlc extends Facade
 {
