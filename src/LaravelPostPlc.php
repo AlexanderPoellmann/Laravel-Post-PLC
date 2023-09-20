@@ -84,19 +84,21 @@ class LaravelPostPlc
 
     public function toArray(): array
     {
-        return json_decode(json_encode($this->getResponse()), true);
+        $array = json_decode(json_encode($this->getResponse()), true);
+
+        return $array['response'] ?? [];
     }
 
     public function toCollection(): Collection
     {
-        return collect($array['response'] ?? []);
+        return collect($this->toArray());
     }
 
     /** @throws Exception */
     public function toObject(): Data
     {
         return match ($this->method) {
-            ServiceMethods::ImportShipment => ImportShipmentResult::from($this->toCollection()),
+            ServiceMethods::ImportShipment => ImportShipmentResult::from($this->toArray()),
             ServiceMethods::ImportShipmentAndGenerateBarcode,
             ServiceMethods::GetAvailableTimeWindowsForPickupOrder,
             ServiceMethods::GetAllowedServicesForCountry,
