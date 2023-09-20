@@ -39,6 +39,6 @@ class ShipmentRow extends Data
         public readonly ?DataCollection $FeatureList,
         /** @var DataCollection<BusinessDocumentEntry> */
         public readonly ?DataCollection $BusinessDocumentEntryList,
-    ) {}
+    ) {
+    }
 }
-

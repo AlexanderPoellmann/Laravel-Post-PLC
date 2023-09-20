@@ -6,5 +6,4 @@ use Spatie\LaravelData\Data;
 
 class ColloCode extends Data
 {
-
 }
