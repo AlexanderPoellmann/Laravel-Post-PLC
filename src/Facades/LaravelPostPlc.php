@@ -14,7 +14,6 @@ use Spatie\LaravelData\Data;
  * @method static string getClientId()
  * @method static string getOrgUnitId()
  * @method static string getOrgUnitGuid()
- *
  * @method static Response call(ServiceMethods $method, Data $data)
  */
 class LaravelPostPlc extends Facade
