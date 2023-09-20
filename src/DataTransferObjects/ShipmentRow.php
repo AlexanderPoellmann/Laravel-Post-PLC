@@ -22,9 +22,9 @@ class ShipmentRow extends Data
         public readonly ?string $OUShipperReference2,
         public readonly AddressRow $OURecipientAddress,
         public readonly ?AddressRow $AlternativeReturnOrgUnitAddress,
-        public readonly string $DeliveryInstruction,
-        public readonly string $MovementReferenceNumber,
-        public readonly string $CustomsDescription,
+        public readonly ?string $DeliveryInstruction,
+        public readonly ?string $MovementReferenceNumber,
+        public readonly ?string $CustomsDescription,
         public readonly ?bool $CustomDataBit1,
         public readonly ?bool $CustomDataBit2,
         public readonly ?string $CustomerProduct, // Can be used to identify the used source system.
