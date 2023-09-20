@@ -7,25 +7,25 @@ use Spatie\LaravelData\Data;
 class AddressRow extends Data
 {
     public function __construct(
-        public readonly ?string $thirdPartyID,
-        public readonly ?string $vatId,
-        public readonly string $name1,
-        public readonly ?string $name2,
-        public readonly ?string $name3,
-        public readonly ?string $name4,
-        public readonly string $addressLine1,
-        public readonly string $houseNumber,
-        public readonly ?string $addressLine2,
-        public readonly string $postalCode,
-        public readonly string $countryID, // ISO-2
-        public readonly string $city,
-        public readonly ?string $tel1,
-        public readonly ?string $tel2,
-        public readonly ?string $fax,
-        public readonly ?string $email,
-        public readonly ?string $homepage,
-        public readonly ?string $eoriNumber,
-        public readonly ?string $personalTaxNumber,
+        public readonly ?string $ThirdPartyID,
+        public readonly ?string $VatId,
+        public readonly string $Name1,
+        public readonly ?string $Name2,
+        public readonly ?string $Name3,
+        public readonly ?string $Name4,
+        public readonly string $AddressLine1,
+        public readonly string $HouseNumber,
+        public readonly ?string $AddressLine2,
+        public readonly string $PostalCode,
+        public readonly string $CountryID, // ISO-2
+        public readonly string $City,
+        public readonly ?string $Tel1,
+        public readonly ?string $Tel2,
+        public readonly ?string $Fax,
+        public readonly ?string $Email,
+        public readonly ?string $Homepage,
+        public readonly ?string $EORINumber,
+        public readonly ?string $PersonalTaxNumber,
     ) {
     }
 }
