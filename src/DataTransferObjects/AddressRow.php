@@ -26,5 +26,6 @@ class AddressRow extends Data
         public readonly ?string $homepage,
         public readonly ?string $eoriNumber,
         public readonly ?string $personalTaxNumber,
-    ) {}
+    ) {
+    }
 }
