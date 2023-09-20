@@ -21,22 +21,26 @@ class LaravelPostPlc
 
     protected bool $sandbox;
 
+    protected ?Response $response = null;
+
     public function __construct()
     {
-        $this->identifier = config('services.post-plc.identifier', 'PLC-Test');
-        $this->client_id = config('services.post-plc.client-id');
-        $this->org_unit_id = config('services.post-plc.org-unit-id');
+        $this->identifier    = config('services.post-plc.identifier', env('APP_NAME', 'Laravel-Post-PLC'));
+        $this->client_id     = config('services.post-plc.client-id');
+        $this->org_unit_id   = config('services.post-plc.org-unit-id');
         $this->org_unit_guid = config('services.post-plc.org-unit-guid');
-        $this->sandbox = config('services.post-plc.sandbox', false);
+        $this->sandbox       = config('services.post-plc.sandbox', false);
     }
 
     public function endpoint(): string
     {
-        return $this->sandbox ? 'https://abn-plc-ecommerce-api.post.at/api/v1/' : 'https://plc-ecommerce-api.post.at/api/v1/';
         return $this->sandbox ? 'https://abn-plc.post.at/DataService/Post.Webservice/ShippingService.svc?wsdl'
                               : 'https://plc.post.at/DataService/Post.Webservice/ShippingService.svc?wsdl';
     }
 
+    public function getIdentifier(): string
+    {
+        return $this->identifier;
     }
 
     public function getClientId(): string
@@ -54,11 +58,29 @@ class LaravelPostPlc
         return $this->org_unit_guid;
     }
 
-    public function call(ServiceMethods $method, Data $data): Response
+    public function call(ServiceMethods $method, Data $data, bool $as_row = false): void
     {
-        info('[Post PLC] Given data.', array_filter($data->toArray()));
+        $data_array = array_filter($data->toArray());
 
-        return Soap::to($this->endpoint())
-                   ->call($method->value, array_filter($data->toArray()));
+        if (app()->environment() === 'local')
+            info('[Post PLC] Given data.', $data_array);
+
+        $this->response = Soap::to($this->endpoint())
+                              ->call($method->value, $as_row ? ['row' => $data_array] : $data_array);
+    }
+
+    public function getResponse(): ?Response
+    {
+        return $this->response;
+    }
+
+    public function toArray(): array
+    {
+        return (array) $this->getResponse();
+    }
+
+    public function hasError(): bool
+    {
+        return true;
     }
 }

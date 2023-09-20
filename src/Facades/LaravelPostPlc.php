@@ -11,10 +11,12 @@ use Spatie\LaravelData\Data;
  * @see \AlexanderPoellmann\LaravelPostPlc\LaravelPostPlc
  *
  * @method static string endpoint()
+ * @method static string getIdentifier()
  * @method static string getClientId()
  * @method static string getOrgUnitId()
  * @method static string getOrgUnitGuid()
- * @method static Response call(ServiceMethods $method, Data $data)
+ * @method static void call(ServiceMethods $method, Data $data, bool $as_row)
+ * @method static array toArray()
  */
 class LaravelPostPlc extends Facade
 {
