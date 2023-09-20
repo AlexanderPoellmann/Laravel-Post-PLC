@@ -18,6 +18,7 @@
         "php": "^8.1",
         "illuminate/contracts": "^10.0",
         "ricorocks-digital-agency/soap": "^1.7",
+        "spatie/laravel-data": "^3.9",
         "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {
