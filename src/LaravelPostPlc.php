@@ -54,5 +54,6 @@ class LaravelPostPlc
     {
         info('[Post PLC] Given data.', array_filter($data->toArray()));
 
+        return Soap::to($this->endpoint())
     }
 }
