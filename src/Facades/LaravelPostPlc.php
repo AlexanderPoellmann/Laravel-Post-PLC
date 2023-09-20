@@ -16,6 +16,7 @@ use Spatie\LaravelData\Data;
  * @method static string getOrgUnitId()
  * @method static string getOrgUnitGuid()
  * @method static void call(ServiceMethods $method, Data $data, bool $as_row)
+ * @method static null|Response getResponse()
  * @method static array toArray()
  */
 class LaravelPostPlc extends Facade
