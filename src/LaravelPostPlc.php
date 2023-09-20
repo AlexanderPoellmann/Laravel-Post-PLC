@@ -50,11 +50,9 @@ class LaravelPostPlc
         return $this->org_unit_guid;
     }
 
-    protected function call(ServiceMethods $method, Data $data): Response
+    public function call(ServiceMethods $method, Data $data): Response
     {
         info('[Post PLC] Given data.', array_filter($data->toArray()));
 
-        return Soap::to($this->endpoint)
-            ->call($method, array_filter($data->toArray()));
     }
 }
