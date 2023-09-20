@@ -4,6 +4,7 @@ namespace AlexanderPoellmann\LaravelPostPlc;
 
 use AlexanderPoellmann\LaravelPostPlc\Enums\ServiceMethods;
 use RicorocksDigitalAgency\Soap\Facades\Soap;
+use RicorocksDigitalAgency\Soap\Response\Response;
 use Spatie\LaravelData\Data;
 
 class LaravelPostPlc
@@ -31,7 +32,22 @@ class LaravelPostPlc
         return $this->sandbox ? 'https://abn-plc-ecommerce-api.post.at/api/v1/' : 'https://plc-ecommerce-api.post.at/api/v1/';
     }
 
-    protected function call(ServiceMethods $method, Data $data): string
+    public function getClientId(): string
+    {
+        return $this->client_id;
+    }
+
+    public function getOrgUnitId(): string
+    {
+        return $this->org_unit_id;
+    }
+
+    public function getOrgUnitGuid(): string
+    {
+        return $this->org_unit_guid;
+    }
+
+    protected function call(ServiceMethods $method, Data $data): Response
     {
         info('[Post PLC] Given data.', $data->toArray());
 
