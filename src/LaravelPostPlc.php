@@ -33,6 +33,10 @@ class LaravelPostPlc
     public function endpoint(): string
     {
         return $this->sandbox ? 'https://abn-plc-ecommerce-api.post.at/api/v1/' : 'https://plc-ecommerce-api.post.at/api/v1/';
+        return $this->sandbox ? 'https://abn-plc.post.at/DataService/Post.Webservice/ShippingService.svc?wsdl'
+                              : 'https://plc.post.at/DataService/Post.Webservice/ShippingService.svc?wsdl';
+    }
+
     }
 
     public function getClientId(): string
