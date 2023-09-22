@@ -12,22 +12,23 @@ use AlexanderPoellmann\LaravelPostPlc\Facades\LaravelPostPlc;
 
 class Shipment extends PlcBase
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->setup();
     }
 
     private function setup(): void
     {
-        $this->add('ClientID',        LaravelPostPlc::getClientId());
-        $this->add('OrgUnitID',       LaravelPostPlc::getOrgUnitId());
-        $this->add('OrgUnitGuid',     LaravelPostPlc::getOrgUnitGuid());
+        $this->add('ClientID', LaravelPostPlc::getClientId());
+        $this->add('OrgUnitID', LaravelPostPlc::getOrgUnitId());
+        $this->add('OrgUnitGuid', LaravelPostPlc::getOrgUnitGuid());
         $this->add('CustomerProduct', LaravelPostPlc::getIdentifier());
     }
 
     public function withPrinter(PrinterLanguages $language = PrinterLanguages::PDF, LabelSizes $labelSize = LabelSizes::SHORT, PaperLayouts $paperLayout = PaperLayouts::A4): self
     {
         $this->add('PrinterObject', [
-            'LanguageID'    => $language,
+            'LanguageID' => $language,
             'LabelFormatID' => $labelSize,
             'PaperLayoutID' => $paperLayout,
         ]);
