@@ -40,6 +40,42 @@ Finally, add the following entry to your `services.php` config file:
 ## Usage
 
 ```php
+$from = (new Address())
+    ->id(sprintf('%05d', mt_rand(1, 10000)))
+    ->name('Absender GmbH')
+    ->route('Rochusmarkt')
+    ->street_number('5')
+    ->post_code('1030')
+    ->city('Wien')
+    ->country_code('AT')
+    ->get();
+
+$to = (new Address())
+    ->id(sprintf('%05d', mt_rand(1, 10000)))
+    ->name('Musterfirma GmbH', 'c/o Frau Maria Muster')
+    ->route('Landesgerichtsstraße')
+    ->street_number('1')
+    ->post_code('1010')
+    ->city('Wien')
+    ->country_code('AT')
+    ->get();
+
+$shipment = (new Shipment())
+    ->withPrinter()
+    ->withNumber(sprintf('%05d', mt_rand(1, 10000)))
+    ->using(PostProductCodes::PaketPremiumOesterreichB2B)
+    ->from($from)
+    ->to($to)
+    ->parcels([
+        (new Collo())->weight(0.4)->get(),
+        (new Collo())->weight(5.2)->get(),
+    ])->get();
+
+LaravelPostPlc::call(ServiceMethods::ImportShipment, $shipment, true);
+
+$object = LaravelPostPlc::toCollection();
+
+dd($object);
 
 ```
 
