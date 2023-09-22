@@ -35,7 +35,7 @@ class Address extends PlcBase
     public function street(string $street): self
     {
         if (preg_match('/(\D+)\s?(.+)/i', $street, $result)) {
-            return $this->route($result[1])->street_number($result[2]);
+            return $this->route(trim($result[1]))->street_number(trim($result[2]));
         }
 
         return $this;
