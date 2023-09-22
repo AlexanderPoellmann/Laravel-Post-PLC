@@ -13,26 +13,30 @@ class Address extends PlcBase
         return $this;
     }
 
-    public function name(string $one, ?string $two = null, ?string $three = null, ?string $four = null): self
+    public function name(string $one, string $two = null, string $three = null, string $four = null): self
     {
         $this->add('Name1', $one);
 
-        if ($two)
+        if ($two) {
             $this->add('Name2', $two);
+        }
 
-        if ($three)
+        if ($three) {
             $this->add('Name3', $three);
+        }
 
-        if ($four)
+        if ($four) {
             $this->add('Name4', $four);
+        }
 
         return $this;
     }
 
     public function street(string $street): self
     {
-        if (preg_match('/(\D+)\s?(.+)/i', $street, $result))
+        if (preg_match('/(\D+)\s?(.+)/i', $street, $result)) {
             return $this->route($result[1])->street_number($result[2]);
+        }
 
         return $this;
     }
