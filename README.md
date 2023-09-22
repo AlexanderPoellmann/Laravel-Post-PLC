@@ -40,6 +40,11 @@ Finally, add the following entry to your `services.php` config file:
 ## Usage
 
 ```php
+use AlexanderPoellmann\LaravelPostPlc\Classes\Address;
+use AlexanderPoellmann\LaravelPostPlc\Classes\Collo;
+use AlexanderPoellmann\LaravelPostPlc\Classes\Shipment;
+use AlexanderPoellmann\LaravelPostPlc\Facades\LaravelPostPlc;
+
 $from = (new Address())
     ->id(sprintf('%05d', mt_rand(1, 10000)))
     ->name('Absender GmbH')
