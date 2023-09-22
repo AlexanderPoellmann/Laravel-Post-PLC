@@ -13,30 +13,18 @@ class Address extends PlcBase
         return $this;
     }
 
-    public function name1(string $name): self
+    public function name(string $one, ?string $two = null, ?string $three = null, ?string $four = null): self
     {
-        $this->add('Name1', $name);
+        $this->add('Name1', $one);
 
-        return $this;
-    }
+        if ($two)
+            $this->add('Name2', $two);
 
-    public function name2(string $name): self
-    {
-        $this->add('Name2', $name);
+        if ($three)
+            $this->add('Name3', $three);
 
-        return $this;
-    }
-
-    public function name3(string $name): self
-    {
-        $this->add('Name3', $name);
-
-        return $this;
-    }
-
-    public function name4(string $name): self
-    {
-        $this->add('Name4', $name);
+        if ($four)
+            $this->add('Name4', $four);
 
         return $this;
     }
