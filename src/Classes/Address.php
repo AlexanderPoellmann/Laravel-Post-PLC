@@ -29,6 +29,14 @@ class Address extends PlcBase
         return $this;
     }
 
+    public function street(string $street): self
+    {
+        if (preg_match('/(\D+)\s?(.+)/i', $street, $result))
+            return $this->route($result[1])->street_number($result[2]);
+
+        return $this;
+    }
+
     public function route(string $route): self
     {
         $this->add('AddressLine1', $route);
