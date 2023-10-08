@@ -32,6 +32,22 @@ class Address extends PlcBase
         return $this;
     }
 
+    public function names(array $names): self
+    {
+        $i = 1;
+
+        foreach ($names as $name) {
+            if ($i > 4)
+                continue;
+
+            $this->add("Name$i", $name);
+
+            $i++;
+        }
+
+        return $this;
+    }
+
     public function street(string $street): self
     {
         if (preg_match('/(\D+)\s?(.+)/i', $street, $result)) {
