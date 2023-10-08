@@ -37,8 +37,9 @@ class Address extends PlcBase
         $i = 1;
 
         foreach ($names as $name) {
-            if ($i > 4)
+            if ($i > 4) {
                 continue;
+            }
 
             $this->add("Name$i", $name);
 
