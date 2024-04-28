@@ -17,9 +17,9 @@
     "require": {
         "php": "^8.1",
         "illuminate/contracts": "^10.0|^11.0",
-        "ricorocks-digital-agency/soap": "^1.7",
-        "spatie/laravel-data": "^3.9",
-        "spatie/laravel-package-tools": "^1.14.0"
+        "ricorocks-digital-agency/soap": "^2.0",
+        "spatie/laravel-data": "^3.12",
+        "spatie/laravel-package-tools": "^1.16.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
