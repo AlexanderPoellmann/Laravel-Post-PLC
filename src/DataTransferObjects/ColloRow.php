@@ -16,6 +16,5 @@ class ColloRow extends Data
         public readonly ?DataCollection $ColloCodeList,
         /** @var DataCollection<ColloArticleRow> */
         public readonly ?DataCollection $ColloArticleList,
-    ) {
-    }
+    ) {}
 }

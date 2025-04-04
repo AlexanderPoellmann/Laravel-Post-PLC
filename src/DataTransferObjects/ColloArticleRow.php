@@ -19,6 +19,5 @@ class ColloArticleRow extends Data
         public readonly string $CurrencyID,
         public readonly float $ConsumerUnitNetWeight,
         public readonly CustomsOptions $CustomsOptionID,
-    ) {
-    }
+    ) {}
 }

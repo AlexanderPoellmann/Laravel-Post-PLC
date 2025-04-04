@@ -15,6 +15,5 @@ class PrinterRow extends Data
         public readonly ?LabelSizes $LabelFormatID,
         public readonly ?PaperLayouts $PaperLayoutID,
         public readonly ?PrinterEncoding $Encoding,
-    ) {
-    }
+    ) {}
 }

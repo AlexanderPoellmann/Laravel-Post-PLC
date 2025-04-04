@@ -15,6 +15,5 @@ class ImportShipmentResult extends Data
         public readonly ?string $shipmentDocuments,
         public readonly ?string $errorCode,
         public readonly ?string $errorMessage,
-    ) {
-    }
+    ) {}
 }

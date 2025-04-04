@@ -13,7 +13,7 @@ class Address extends PlcBase
         return $this;
     }
 
-    public function name(string $one, string $two = null, string $three = null, string $four = null): self
+    public function name(string $one, ?string $two = null, ?string $three = null, ?string $four = null): self
     {
         $this->add('Name1', $one);
 

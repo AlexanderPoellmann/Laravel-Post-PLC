@@ -13,6 +13,5 @@ class FeatureRow extends Data
         public readonly ?string $Value2,
         public readonly ?string $Value3,
         public readonly ?string $Value4,
-    ) {
-    }
+    ) {}
 }
