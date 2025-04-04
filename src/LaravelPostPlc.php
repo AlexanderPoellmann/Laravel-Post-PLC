@@ -39,8 +39,7 @@ class LaravelPostPlc
 
     public function endpoint(): string
     {
-        return $this->sandbox ? 'https://abn-plc.post.at/DataService/Post.Webservice/ShippingService.svc?wsdl'
-                              : 'https://plc.post.at/DataService/Post.Webservice/ShippingService.svc?wsdl';
+        return 'https://abn-plc.post.at/DataService/Post.Webservice/ShippingService.svc?wsdl';
     }
 
     public function getIdentifier(): string
