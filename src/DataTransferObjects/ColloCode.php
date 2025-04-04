@@ -10,6 +10,5 @@ class ColloCode extends Data
         public readonly string $Code,
         public readonly string $NumberTypeID,
         public readonly ?string $OUCarrierThirdPartyID,
-    ) {
-    }
+    ) {}
 }
